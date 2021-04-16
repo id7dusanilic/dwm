@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h> /* For audio and background settings */
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -59,6 +60,12 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "terminator", NULL };
+static const char *mutecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *volupcmd[] = { "amixer", "-q", "set", "Master", "5%+", "unmute", NULL };
+static const char *voldowncmd[] = { "amixer", "-q", "set", "Master", "5%-", "unmute", NULL };
+static const char *miccmd[] = { "amixer", "set", "Capture", "toggle", NULL };
+static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
+static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -96,6 +103,11 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
+	{ 0, XF86XK_AudioMute, spawn, {.v = mutecmd } },
+	{ 0, XF86XK_AudioLowerVolume, spawn, {.v = voldowncmd } },
+	{ 0, XF86XK_AudioRaiseVolume, spawn, {.v = volupcmd } },
+	{ 0, XF86XK_MonBrightnessUp, spawn, {.v = brupcmd} },
+	{ 0, XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd} },
 };
 
 /* button definitions */
