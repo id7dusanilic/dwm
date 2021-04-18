@@ -62,8 +62,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char *brupcmd[] = { "sudo", "xbacklight", "-inc", "10", NULL };
-static const char *brdowncmd[] = { "sudo", "xbacklight", "-dec", "10", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -107,8 +105,8 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioMute,          spawn,		CMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		CMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		CMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_MonBrightnessUp, spawn, {.v = brupcmd} },
-	{ 0, XF86XK_MonBrightnessDown, spawn, {.v = brdowncmd} },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,      CMD("sudo backlight --inc 10") },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,      CMD("sudo backlight --dec 10") },
 };
 
 /* button definitions */
