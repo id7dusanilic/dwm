@@ -97,7 +97,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	// { MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY,                       XK_space,  spawn,          CMD("kill -49 $(pidof dwmblocks)") },
+	{ MODKEY,                       XK_space,  spawn,          CMD("kill -36 $(pidof dwmblocks)") },
 	{ MODKEY,                       XK_w,      spawn,          CMD("brave") },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          CMD("slock") },
 	{ MODKEY,                       XK_r,      spawn,          CMD("st -e lf") },
@@ -119,9 +119,9 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
-	{ 0, XF86XK_AudioMute,          spawn,		CMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioRaiseVolume,	spawn,		CMD("pamixer --allow-boost -i 5; kill -44 $(pidof dwmblocks)") },
-	{ 0, XF86XK_AudioLowerVolume,	spawn,		CMD("pamixer --allow-boost -d 5; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioMute,          spawn,		CMD("pamixer -t; kill -37 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioRaiseVolume,	spawn,		CMD("pamixer --allow-boost -i 5; kill -37 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioLowerVolume,	spawn,		CMD("pamixer --allow-boost -d 5; kill -37 $(pidof dwmblocks)") },
 	{ 0, XF86XK_MonBrightnessUp,    spawn,      CMD("sudo backlight --inc 10") },
 	{ 0, XF86XK_MonBrightnessDown,  spawn,      CMD("sudo backlight --dec 10") },
 };
