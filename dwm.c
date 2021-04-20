@@ -819,11 +819,8 @@ drawbar(Monitor *m)
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
-	if (m == selmon) {
-		blw = w, ble = x;
-		w = m->ww - wstext - x;
-	} else
-		w = m->ww - x;
+	blw = w, ble = x;
+	w = m->ww - wstext - x;
 
 	if (w > bh) {
 		if (m->sel) {
