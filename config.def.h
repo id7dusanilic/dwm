@@ -98,7 +98,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	// { MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY,                       XK_space,  spawn,          CMD("kill -36 $(pidof dwmblocks)") },
-	{ MODKEY,                       XK_w,      spawn,          CMD("brave") },
+	{ MODKEY,                       XK_w,      spawn,          CMD("tabbed surf -e") },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          CMD("slock") },
 	{ MODKEY,                       XK_r,      spawn,          CMD("st -e lf") },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -122,8 +122,8 @@ static Key keys[] = {
 	{ 0, XF86XK_AudioMute,          spawn,		CMD("pamixer -t; kill -37 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		CMD("pamixer --allow-boost -i 5; kill -37 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		CMD("pamixer --allow-boost -d 5; kill -37 $(pidof dwmblocks)") },
-	{ 0, XF86XK_MonBrightnessUp,    spawn,      CMD("sudo backlight --inc 10") },
-	{ 0, XF86XK_MonBrightnessDown,  spawn,      CMD("sudo backlight --dec 10") },
+	{ 0, XF86XK_MonBrightnessUp,    spawn,      CMD("backlight --inc 10") },
+	{ 0, XF86XK_MonBrightnessDown,  spawn,      CMD("backlight --dec 10") },
 };
 
 /* button definitions */
@@ -139,6 +139,7 @@ static Button buttons[] = {
 	{ ClkStatusText,        0,              Button4,        sigdwmblocks,   {.i = 4} },
 	{ ClkStatusText,        0,              Button5,        sigdwmblocks,   {.i = 5} },
 	{ ClkStatusText,        ShiftMask,      Button1,        sigdwmblocks,   {.i = 6} },
+	{ ClkStatusText,        ShiftMask,      Button3,        sigdwmblocks,   {.i = 7} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
