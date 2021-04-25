@@ -106,6 +106,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          CMD("tabbed surf -e") },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          CMD("slock") },
 	{ MODKEY,                       XK_r,      spawn,          CMD("st -e lf") },
+	{ MODKEY|ShiftMask,             XK_q,	   spawn,	       CMD("quitdwm") },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -122,8 +123,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },
 	{ 0, XF86XK_AudioMute,          spawn,		CMD("pamixer -t; kill -37 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		CMD("pamixer --allow-boost -i 5; kill -37 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		CMD("pamixer --allow-boost -d 5; kill -37 $(pidof dwmblocks)") },
