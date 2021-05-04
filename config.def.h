@@ -5,7 +5,7 @@
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int fixedtags = 4;		/* number of tags to show even if vacant */
+static const unsigned int fixedtags = 5;		/* number of tags to show even if vacant */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
@@ -42,7 +42,7 @@ static const char *colors[][3]      = {
 /* tagging */
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -55,7 +55,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.65; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
@@ -105,8 +105,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,      spawn,          CMD("brave") },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          CMD("tabbed surf -e") },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          CMD("slock") },
-	{ MODKEY,                       XK_r,      spawn,          CMD("st -e lf") },
+	{ MODKEY,                       XK_r,      spawn,          CMD("st -e ranger") },
 	{ MODKEY|ShiftMask,             XK_q,	   spawn,	       CMD("quitdwm") },
+	{ MODKEY|ShiftMask,             XK_backslash, spawn,       CMD("dmenucpboardrun") },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
