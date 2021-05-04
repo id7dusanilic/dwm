@@ -101,7 +101,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	// { MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY,                       XK_space,  spawn,          CMD("kill -36 $(pidof dwmblocks)") },
+	{ MODKEY,                       XK_space,  spawn,          CMD("next_kb_layout") },
 	{ MODKEY,                       XK_w,      spawn,          CMD("brave") },
 	{ MODKEY|ShiftMask,             XK_w,      spawn,          CMD("tabbed surf -e") },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          CMD("slock") },
