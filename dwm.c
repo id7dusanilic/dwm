@@ -2374,7 +2374,7 @@ updatestatus(void)
 		*stp = *stc = *sts = '\0';
 		wstext = TTEXTW(stextp) + LSPAD + RSPAD;
         } else {
-			strcpy(stextc, "dwm-"VERSION);
+			strcpy(stextc, "");
 			strcpy(stexts, stextc);
 			wstext = TTEXTW(stextc) + LSPAD + RSPAD;
         }
