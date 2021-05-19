@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=dwm Session
+Encoding=UTF-8
+Comment=Use this session to run dynamic window manager 
+Exec=dwm
+Icon=
+Type=XSession
+DesktopNames=dwm
