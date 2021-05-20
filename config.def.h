@@ -4,8 +4,8 @@
 #include <X11/XF86keysym.h> /* For audio and background settings */
 
 /* constants */
-#define TERMINAL	"st"
-#define BROWSER		"brave"
+#define TERMINAL    "${TERM_EMULATOR}"          /* These environment variables need to be defined. */
+#define BROWSER     "${BROWSER}"                /* Otherwise, hardcode preffered applications. */
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -83,7 +83,7 @@ static Key keys[] = {
 
 	/* Spawning programs */
 	{ MODKEY,              XK_p,                      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,    XK_Return,                 spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,    XK_Return,                 spawn,          SHCMD(TERMINAL) },
 	{ MODKEY,              XK_space,                  spawn,          SHCMD("next_kb_layout") },
 	{ MODKEY,              XK_w,                      spawn,          SHCMD(BROWSER) },
 	{ MODKEY|ShiftMask,    XK_w,                      spawn,          SHCMD("tabbed surf -e") },
