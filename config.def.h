@@ -29,9 +29,9 @@ static const char sel_border_col[]	= "#924441";
 enum { SchemeNorm, SchemeSel }; /* color schemes */
 
 static const char *colors[][3]      = {
-	/*				  fg            bg              border   */
-	[SchemeNorm]  = { norm_fg_col,	norm_bg_col,	norm_border_col },
-	[SchemeSel]   = { sel_fg_col,	sel_bg_col,		sel_border_col },
+	/*                fg            bg              border */
+	[SchemeNorm]  = { norm_fg_col,  norm_bg_col,    norm_border_col },
+	[SchemeSel]   = { sel_fg_col,   sel_bg_col,     sel_border_col },
 };
 
 /* tagging */
@@ -44,9 +44,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/* class        instance             title  tags mask  isfloating  monitor */
+	{ "Gimp",       NULL,                NULL,  0,         1,          -1 },
+	{ "Firefox",    NULL,                NULL,  1 << 8,    0,          -1 },
+	{ "Alacritty",  "FloatingTerminal",  NULL,  0,         1,          -1 },
 };
 
 /* layout(s) */
@@ -76,7 +77,6 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, NULL };
-static const char *termcmd[]  = { TERMINAL, NULL };
 
 static Key keys[] = {
 	/* modifier            key                        function        argument */
