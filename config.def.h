@@ -19,12 +19,12 @@ static const char *fonts[]          = { "Mononoki Nerd Font:size=13" };
 static const char dmenufont[]       = "Mononoki Nerd Font:size=13";
 
 /* colors */
-static const char norm_fg_col[]		= "#d7d7d7";
-static const char norm_bg_col[]		= "#282c34";
-static const char norm_border_col[]	= "#282c34";
-static const char sel_fg_col[]		= "#d7d7d7";
-static const char sel_bg_col[]		= "#924441";
-static const char sel_border_col[]	= "#924441";
+static const char norm_fg_col[]     = "#eeeeee";
+static const char norm_bg_col[]     = "#282828";
+static const char norm_border_col[] = "#282828";
+static const char sel_fg_col[]      = "#eeeeee";
+static const char sel_bg_col[]      = "#7c7c7c";
+static const char sel_border_col[]  = "#550000";
 
 enum { SchemeNorm, SchemeSel }; /* color schemes */
 
@@ -57,7 +57,7 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 
 static const Layout layouts[] = {
 	/* symbol	arrange function */
-	{ "ﰧ"       tile },    /* first entry is default */
+	{ "ﰧ",       tile },    /* first entry is default */
 	{ "",      NULL },    /* no layout function means floating behavior */
 	{ "",      monocle },
 	{ "ﰦ",      bstack},
