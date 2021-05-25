@@ -11,7 +11,7 @@
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int fixedtags = 5;		/* number of tags to show even if vacant */
+static const unsigned int fixedtags = 5;        /* number of tags to show even if vacant */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
@@ -84,7 +84,8 @@ static Key keys[] = {
 	/* Spawning programs */
 	{ MODKEY,              XK_p,                      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,    XK_Return,                 spawn,          SHCMD(TERMINAL) },
-	{ MODKEY,              XK_space,                  spawn,          SHCMD("next_kb_layout") },
+	{ MODKEY,              XK_space,                  spawn,          SHCMD("previous_kb_layout") },
+	{ MODKEY|ControlMask,  XK_space,                  spawn,          SHCMD("dmenu_keyboard_layout") },
 	{ MODKEY,              XK_w,                      spawn,          SHCMD(BROWSER) },
 	{ MODKEY|ShiftMask,    XK_w,                      spawn,          SHCMD("tabbed surf -e") },
 	{ MODKEY|ShiftMask,    XK_l,                      spawn,          SHCMD("slock") },
