@@ -82,17 +82,13 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static Key keys[] = {
 	/* modifier            key                        function        argument */
 
-	/* Spawning programs */
+	/* Spawning */
 	{ MODKEY,              XK_p,                      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,    XK_Return,                 spawn,          SHCMD(TERMINAL) },
-	{ MODKEY,              XK_space,                  spawn,          SHCMD("previous_kb_layout") },
-	{ MODKEY|ControlMask,  XK_space,                  spawn,          SHCMD("dmenu_keyboard_layout") },
-	{ MODKEY,              XK_w,                      spawn,          SHCMD(BROWSER) },
-	{ MODKEY|ShiftMask,    XK_w,                      spawn,          SHCMD("tabbed surf -e") },
-	{ MODKEY|ShiftMask,    XK_l,                      spawn,          SHCMD("slock") },
-	{ MODKEY,              XK_r,                      spawn,          SHCMD(TERMINAL " -e ranger") },
-	{ MODKEY|ShiftMask,    XK_q,	                  spawn,          SHCMD("dmenu_system") },
-	{ MODKEY|ShiftMask,    XK_backslash,              spawn,          SHCMD("dmenu_clipboard_run") },
+
+	/* Quiting dwm */
+	{ MODKEY,              XK_Escape,                 quit,           {0} },
+	{ MODKEY|ShiftMask,    XK_Escape,                 quit,           {1} },
 
 	/* Layout */
 	{ MODKEY,              XK_t,                      setlayout,      {.v = &layouts[0]} },
@@ -131,15 +127,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,    XK_Up,                     moveresize,     {.v = "0x 0y 0w -25h" } },
 	{ MODKEY|ShiftMask,    XK_Right,                  moveresize,     {.v = "0x 0y 25w 0h" } },
 	{ MODKEY|ShiftMask,    XK_Left,                   moveresize,     {.v = "0x 0y -25w 0h" } },
-
-	/* Audio control */
-	{ 0,                   XF86XK_AudioMute,          spawn,          SHCMD("pamixer -t; kill -37 $(pidof dwmblocks)") },
-	{ 0,                   XF86XK_AudioRaiseVolume,	  spawn,          SHCMD("pamixer --allow-boost -i 5; kill -37 $(pidof dwmblocks)") },
-	{ 0,                   XF86XK_AudioLowerVolume,	  spawn,          SHCMD("pamixer --allow-boost -d 5; kill -37 $(pidof dwmblocks)") },
-
-	/* Brightness control */
-	{ 0,                   XF86XK_MonBrightnessUp,    spawn,          SHCMD("backlight --inc 10") },
-	{ 0,                   XF86XK_MonBrightnessDown,  spawn,          SHCMD("backlight --dec 10") },
 
 	/* Tags */
 	TAGKEYS(               XK_1,                                      0)
