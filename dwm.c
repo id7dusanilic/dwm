@@ -101,7 +101,7 @@ struct Client {
 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
 	int bw, oldbw;
 	unsigned int tags;
-	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, issticky;
+	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen, issticky, isnotification;
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -150,6 +150,7 @@ typedef struct {
 	const char *title;
 	unsigned int tags;
 	int isfloating;
+	int isnotification;
 	int monitor;
 } Rule;
 
@@ -334,6 +335,8 @@ applyrules(Client *c)
 		&& (!r->instance || strstr(instance, r->instance)))
 		{
 			c->isfloating = r->isfloating;
+			c->isnotification = r->isnotification;
+			if (c->isnotification) c->isfloating = c->isnotification;
 			c->tags |= r->tags;
 			for (m = mons; m && m->num != r->monitor; m = m->next);
 			if (m)
@@ -1115,6 +1118,7 @@ manage(Window w, XWindowAttributes *wa)
 	c->w = c->oldw = wa->width;
 	c->h = c->oldh = wa->height;
 	c->oldbw = wa->border_width;
+	c->isnotification = 0;
 
 	updatetitle(c);
 	if (XGetTransientForHint(dpy, w, &trans) && (t = wintoclient(trans))) {
@@ -1142,8 +1146,15 @@ manage(Window w, XWindowAttributes *wa)
 	updatewindowtype(c);
 	updatesizehints(c);
 	updatewmhints(c);
-	c->x = c->mon->mx + (c->mon->mw - WIDTH(c)) / 2;
-	c->y = c->mon->my + (c->mon->mh - HEIGHT(c)) / 2;
+	if (!c->isnotification) {
+		c->x = c->mon->mx + (c->mon->mw - WIDTH(c)) / 2;
+		c->y = c->mon->my + (c->mon->mh - HEIGHT(c)) / 2;
+	} else {
+		// c->w = c->mon->mw / 5;
+		// c->h = c->mon->mh / 5;
+		c->x = c->mon->mx + (c->mon->mw - WIDTH(c));
+		c->y = c->mon->my + 30;
+	}
 	XSelectInput(dpy, w, EnterWindowMask|FocusChangeMask|PropertyChangeMask|StructureNotifyMask);
 	grabbuttons(c, 0);
 	if (!c->isfloating)
