@@ -1431,13 +1431,13 @@ resizeclient(Client *c, int x, int y, int w, int h)
         unsigned int gapoffset;
         unsigned int gapincr;
         Client *nbc;
-	
+
 
 	wc.border_width = c->bw;
 
         /* Get number of clients for the client's monitor */
         for (n = 0, nbc = nexttiled(c->mon->clients); nbc; nbc = nexttiled(nbc->next), n++);
- 
+
         /* Do nothing if layout is floating */
         if (c->isfloating || c->mon->lt[c->mon->sellt]->arrange == NULL) {
                 gapincr = gapoffset = 0;
@@ -1452,7 +1452,7 @@ resizeclient(Client *c, int x, int y, int w, int h)
                         gapincr = 2 * gappx;
                 }
         }
- 
+
         c->oldx = c->x; c->x = wc.x = x + gapoffset;
         c->oldy = c->y; c->y = wc.y = y + gapoffset;
         c->oldw = c->w; c->w = wc.width = w - gapincr;
@@ -2385,7 +2385,7 @@ updatestatus(void)
 			strcpy(stexts, stextc);
 			wstext = TTEXTW(stextc) + LSPAD + RSPAD;
         }
-		
+
 	for(m = mons; m; m = m->next)
 		drawbar(m);
 }
