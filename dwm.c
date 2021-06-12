@@ -484,7 +484,7 @@ buttonpress(XEvent *e)
 			for (c = m->clients; c; c= c->next)
 				occ |= c->tags == 255 ? 0 : c->tags;
 			do {
-				if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i) && i > (fixedtags-1)) {
+				if (!((occ & 1 << i) || (m->tagset[m->seltags] & ~((1 << i) - 1))) && (i > (fixedtags-1))) {
 					goalwidth -= TEXTW(tags[++i]);
 					continue;
 				}
@@ -813,15 +813,18 @@ drawbar(Monitor *m)
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
 		/* do not draw vacant tags */
-		if (!(occ & 1 << i || m->tagset[m->seltags] & 1 << i) && i > (fixedtags-1))
+		if (!(occ & 1 << i || m->tagset[m->seltags] & ~((1 << i) - 1)) && i > (fixedtags-1))
 			continue;
 		w = TEXTW(tags[i]);
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, lrpad / 2, tags[i], urg & 1 << i);
-		/* Drawing rectangles on fixed tags with clients active */
-        if ((occ & 1 << i) && i < fixedtags)
+		/* Underline tag if active */
+		if ((m->tagset[m->seltags] & 1 << i) && ulactivetag)
+			drw_rect(drw, x, bh - ulwidth, w, ulwidth, 1, 0);
+		/* Drawing rectangles on tags with clients active */
+        if ((occ & 1 << i))
             drw_rect(drw, x + boxs, boxs, boxw, boxw,
-                m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
+                (m == selmon && selmon->sel && selmon->sel->tags & 1 << i) || flclientsqin,
                 urg & 1 << i);
 
 		x += w;
@@ -835,12 +838,11 @@ drawbar(Monitor *m)
 
 	if (w > bh) {
 		if (m->sel) {
-			// drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
-			drw_setscheme(drw, scheme[SchemeNorm]);
+			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
 			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
-			if (m == selmon)
-				// drw_rect(drw, x, bh - 2, w, 2, 1, 0);
-				drw_rect(drw, x, 0, w, 2, 1, 0);
+			if ((m == selmon) && ulactivemon) {
+				drw_rect(drw, x, bh - ulwidth, w, ulwidth, 1, 0);
+			}
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
 		} else {
@@ -1800,7 +1802,7 @@ setup(void)
 	if (!drw_fontset_create(drw, fonts, LENGTH(fonts)))
 		die("no fonts could be loaded.");
 	lrpad = drw->fonts->h;
-	bh = drw->fonts->h + 2;
+	bh = drw->fonts->h + barpadpx + 2;
 	updategeom();
 	/* init atoms */
 	utf8string = XInternAtom(dpy, "UTF8_STRING", False);

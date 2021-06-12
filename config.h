@@ -12,19 +12,24 @@ static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 6;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int fixedtags = 5;        /* number of tags to show even if vacant */
+static const unsigned int barpadpx  = 6;        /* bar height extra padding */
+static const unsigned int ulwidth   = 2;        /* underlines in status bar width */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int ulactivetag        = 1;        /* 0 means do not underline active tag */
+static const int ulactivemon        = 1;        /* 0 means do not underline window name on active monitor */
+static const int flclientsqin       = 1;        /* 0 means do not fill clients present indicator on inactive tags */
 static const int focusonwheel       = 0;
-static const char *fonts[]          = { "Mononoki Nerd Font:size=13" };
-static const char dmenufont[]       = "Mononoki Nerd Font:size=13";
+static const char *fonts[]          = { "Mononoki Nerd Font:size=12:antialias=true" };
+static const char dmenufont[]       = "Mononoki Nerd Font:size=12";
 
 /* colors */
-static const char norm_fg_col[]     = "#eeeeee";
-static const char norm_bg_col[]     = "#282828";
-static const char norm_border_col[] = "#282828";
-static const char sel_fg_col[]      = "#eeeeee";
-static const char sel_bg_col[]      = "#7c7c7c";
-static const char sel_border_col[]  = "#550000";
+static const char norm_fg_col[]     = "#aaaaaa";
+static const char norm_bg_col[]     = "#222222";
+static const char norm_border_col[] = "#222222";
+static const char sel_fg_col[]      = "#ffffff";
+static const char sel_bg_col[]      = "#222222";
+static const char sel_border_col[]  = "#770000";
 
 enum { SchemeNorm, SchemeSel }; /* color schemes */
 
@@ -35,7 +40,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "www", "dev", "dir", "sys", "doc", "misc", "7", "8", "9" };
+// static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
