@@ -11,7 +11,7 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 4;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const unsigned int fixedtags = 5;        /* number of tags to show even if vacant */
+static const unsigned int fixedtags = 6;        /* number of tags to show even if vacant */
 static const unsigned int barpadpx  = 6;        /* bar height extra padding */
 static const unsigned int ulwidth   = 2;        /* underlines in status bar width */
 static const unsigned int ulhpadpx  = 10;       /* underlines in status bar horizontal padding */
@@ -41,7 +41,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "www", "dev", "dir", "sys", "doc", "misc", "7", "8", "9" };
+static const char *tags[] = { "www", "dev", "dir", "sys", "doc", "gfx", "misc", "8", "9" };
 // static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 // static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 // static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
