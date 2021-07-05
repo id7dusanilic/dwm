@@ -8,12 +8,13 @@
 #define BROWSER     "${BROWSER}"                /* Otherwise, hardcode preffered applications. */
 
 /* appearance */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
-static const unsigned int gappx     = 6;        /* gaps between windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 4;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int fixedtags = 5;        /* number of tags to show even if vacant */
 static const unsigned int barpadpx  = 6;        /* bar height extra padding */
 static const unsigned int ulwidth   = 2;        /* underlines in status bar width */
+static const unsigned int ulhpadpx  = 10;       /* underlines in status bar horizontal padding */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int ulactivetag        = 1;        /* 0 means do not underline active tag */
